@@ -51,23 +51,23 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+My model consists of a convolution neural network modeled on the Nvidia CNN used for End-to-End driverless car. It consists of 5 convolutional layers where the first 3 layers use 2x2 pooling and 5x5 filters with outputs ranging from 24 to 48 and the last 2 use a 3x3 filter with both outputs of 64 (model.py lines XXX).
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
+The model includes RELU layers to introduce nonlinearity on all 5 convolutional layers (code lines XXX), and the data is normalized in the model using a Keras lambda layer (code line XXX). 
 
 #### 2. Attempts to reduce overfitting in the model
 
-The model contains dropout layers in order to reduce overfitting (model.py lines 21). 
+The model fully convolutional layers contain dropout layers in order to reduce overfitting (model.py lines XXX). 
 
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model was trained and validated on different data sets to ensure that the model was not overfitting (code line XXX). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model used an adam optimizer, so the learning rate was not tuned manually (model.py line XXX).
 
 #### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ... 
+Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road as well as recordings from both tracks.
 
 For details about how I created the training data, see the next section. 
 
@@ -75,7 +75,7 @@ For details about how I created the training data, see the next section.
 
 #### 1. Solution Design Approach
 
-The overall strategy for deriving a model architecture was to ...
+The overall strategy for deriving a model architecture was to use a networks that is already proven
 
 My first step was to use a convolution neural network model similar to the ... I thought this model might be appropriate because ...
 
