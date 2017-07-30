@@ -19,8 +19,8 @@ The goals / steps of this project are the following:
 [image3]: ./examples/recovery1.png "Recovery Image - far"
 [image4]: ./examples/recovery2.png "Recovery Image - mid"
 [image5]: ./examples/recovery3.png "Recovery Image - center"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image6]: ./examples/normal_image.jpg "Normal Image"
+[image7]: ./examples/flipped_image.jpg "Flipped Image"
 [image8]: ./examples/left_camera.jpg "Left Camera Image"
 [image9]: ./examples/center_camera.jpg "Center Camera Image"
 [image10]: ./examples/right_camera.jpg "Right Camera Image"
@@ -93,6 +93,7 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 #### 2. Final Model Architecture
 
 The final model architecture (model.py lines XXX) consisted of a convolution neural network with the following layers and layer sizes (using model.summary() method from Keras):
+```
 Layer (type)                     Output Shape          Param #     Connected to                     
 ====================================================================================================
 cropping2d_1 (Cropping2D)        (None, 90, 320, 3)    0           cropping2d_input_1[0][0]         
@@ -123,7 +124,7 @@ dropout_3 (Dropout)              (None, 50)            0           dense_2[0][0]
 ____________________________________________________________________________________________________
 dense_3 (Dense)                  (None, 1)             51          dropout_3[0][0]                  
 ====================================================================================================
-
+```
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
 
