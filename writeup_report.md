@@ -28,6 +28,9 @@ The goals / steps of this project are the following:
 [image12]: ./examples/cropped_image.png "Preprocessed Image"
 
 [video1]: ./videos/first_track_9.mp4 "First Track, 9mph"
+[video2]: ./videos/first_track.mp4 "First Track, 15mph"
+[video3]: ./videos/second_track_9.mp4 "Second Track, 9mph"
+[video4]: ./videos/second_track.mp4 "Second Track, 15mph"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -187,3 +190,6 @@ I used the remaining 80% as training data for the model. The validation set help
 
 The final videos can be found here:
 - [First track @9mph][video1]
+- [First track @15mph][video2]
+- [Second track @9mph][video3]
+- [Second track @15mph][video4]
