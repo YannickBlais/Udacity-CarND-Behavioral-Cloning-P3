@@ -16,16 +16,21 @@ The goals / steps of this project are the following:
 
 [image1]: ./examples/network_model.png "Model Visualization"
 [image2]: ./examples/center_lane.jpg "Center lane example"
-[image3]: ./examples/recovery1.png "Recovery Image - far"
-[image4]: ./examples/recovery2.png "Recovery Image - mid"
-[image5]: ./examples/recovery3.png "Recovery Image - center"
+[image3]: ./examples/recovery_1.jpg "Recovery Image - far"
+[image4]: ./examples/recovery2.jpg "Recovery Image - mid"
+[image5]: ./examples/recovery3.jpg "Recovery Image - center"
 [image6]: ./examples/normal_image.jpg "Normal Image"
 [image7]: ./examples/flipped_image.jpg "Flipped Image"
 [image8]: ./examples/left_camera.jpg "Left Camera Image"
 [image9]: ./examples/center_camera.jpg "Center Camera Image"
 [image10]: ./examples/right_camera.jpg "Right Camera Image"
 [image11]: ./examples/original_image.png "Original Image (without preprocessing)"
-[image12]: ./examples/cropped_image.png "Preprocessed Image"
+[image12]: ./examples/preprocessed_image.png "Preprocessed Image"
+
+[video1]: ./videos/first_track_9.mp4 "First Track, 9mph"
+[video2]: ./videos/first_track.mp4 "First Track, 15mph"
+[video3]: ./videos/second_track_9.mp4 "Second Track, 9mph"
+[video4]: ./videos/second_track.mp4 "Second Track, 15mph"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -182,3 +187,9 @@ Here is an example of an image pre- and post-preprocessing:
 I randomly shuffled the data set and put 20% of the data into a validation.
 
 I used the remaining 80% as training data for the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs I found was 10 as evidenced by the good driving of the vehicle on both tracks. More itereations reduced slightly the training and validation loss but did not improve the actual driving. I used an adam optimizer so that manually training the learning rate wasn't necessary.
+
+The final videos can be found here:
+- [First track @9mph][video1]
+- [First track @15mph][video2]
+- [Second track @9mph][video3]
+- [Second track @15mph][video4]
