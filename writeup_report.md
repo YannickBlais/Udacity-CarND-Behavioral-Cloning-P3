@@ -99,29 +99,28 @@ At the end of the process, the vehicle is able to drive autonomously around both
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines XXX) consisted of a convolution neural network with the following layers and layer sizes (using model.summary() method from Keras):
+The final model architecture (model.py lines 140-153) consisted of a convolution neural network with the following layers and layer sizes (using model.summary() method from Keras):
 ```
+____________________________________________________________________________________________________
 Layer (type)                     Output Shape          Param #     Connected to                     
 ====================================================================================================
-cropping2d_1 (Cropping2D)        (None, 90, 320, 3)    0           cropping2d_input_1[0][0]         
+lambda_1 (Lambda)                (None, 66, 200, 3)    0           lambda_input_1[0][0]             
 ____________________________________________________________________________________________________
-lambda_1 (Lambda)                (None, 90, 320, 3)    0           cropping2d_1[0][0]               
+convolution2d_1 (Convolution2D)  (None, 31, 98, 24)    1824        lambda_1[0][0]                   
 ____________________________________________________________________________________________________
-convolution2d_1 (Convolution2D)  (None, 43, 158, 24)   1824        lambda_1[0][0]                   
+convolution2d_2 (Convolution2D)  (None, 14, 47, 36)    21636       convolution2d_1[0][0]            
 ____________________________________________________________________________________________________
-convolution2d_2 (Convolution2D)  (None, 20, 77, 36)    21636       convolution2d_1[0][0]            
+convolution2d_3 (Convolution2D)  (None, 5, 22, 48)     43248       convolution2d_2[0][0]            
 ____________________________________________________________________________________________________
-convolution2d_3 (Convolution2D)  (None, 8, 37, 48)     43248       convolution2d_2[0][0]            
+convolution2d_4 (Convolution2D)  (None, 3, 20, 64)     27712       convolution2d_3[0][0]            
 ____________________________________________________________________________________________________
-convolution2d_4 (Convolution2D)  (None, 3, 18, 64)     27712       convolution2d_3[0][0]            
+convolution2d_5 (Convolution2D)  (None, 1, 18, 64)     36928       convolution2d_4[0][0]            
 ____________________________________________________________________________________________________
-convolution2d_5 (Convolution2D)  (None, 1, 16, 64)     36928       convolution2d_4[0][0]            
+flatten_1 (Flatten)              (None, 1152)          0           convolution2d_5[0][0]            
 ____________________________________________________________________________________________________
-flatten_1 (Flatten)              (None, 1024)          0           convolution2d_5[0][0]            
+dropout_1 (Dropout)              (None, 1152)          0           flatten_1[0][0]                  
 ____________________________________________________________________________________________________
-dropout_1 (Dropout)              (None, 1024)          0           flatten_1[0][0]                  
-____________________________________________________________________________________________________
-dense_1 (Dense)                  (None, 100)           102500      dropout_1[0][0]                  
+dense_1 (Dense)                  (None, 100)           115300      dropout_1[0][0]                  
 ____________________________________________________________________________________________________
 dropout_2 (Dropout)              (None, 100)           0           dense_1[0][0]                    
 ____________________________________________________________________________________________________
@@ -129,11 +128,19 @@ dense_2 (Dense)                  (None, 50)            5050        dropout_2[0][
 ____________________________________________________________________________________________________
 dropout_3 (Dropout)              (None, 50)            0           dense_2[0][0]                    
 ____________________________________________________________________________________________________
-dense_3 (Dense)                  (None, 1)             51          dropout_3[0][0]                  
+dense_3 (Dense)                  (None, 10)            510         dropout_3[0][0]                  
+____________________________________________________________________________________________________
+dropout_4 (Dropout)              (None, 10)            0           dense_3[0][0]                    
+____________________________________________________________________________________________________
+dense_4 (Dense)                  (None, 1)             11          dropout_4[0][0]                  
 ====================================================================================================
+Total params: 252,219
+Trainable params: 252,219
+Non-trainable params: 0
+____________________________________________________________________________________________________
 ```
 
-Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
+Here is a visualization of the architecture
 
 ![alt text][image1]
 
@@ -149,22 +156,24 @@ I then recorded the vehicle recovering from the left side and right sides of the
 ![alt text][image4]
 ![alt text][image5]
 
+In order to get my model to generalize better, I also recorded images while driving on the track in reverse. Likewise, I recorded images of the vehice recovering from left and right to the center while driving in reverse.
+
 Then I repeated this process on track two in order to get more data points.
 
-To augment the data sat, I also flipped images and angles (see model.py lines XXX) thinking that this would help generaliza the training. For example, here is an image that has then been flipped:
+To augment the data set, I also flipped images and angles (see model.py lines 56-59) thinking that this would help generalize the training. For example, here is an example of an image and its flipped counterpart:
 
 ![alt text][image6]
 ![alt text][image7]
 
-I also included the left and right images. In order to do so I had to apply a small correction offset to the angle applied to those images as described in the course. After some tests, I used a correction of 0.1 (XXX) that seemed to give the best driving results. Using the left and right images helped generalized the training by augmenting the input data. Here are some examples of left and right images:
+I also included the left and right images. In order to do so I had to apply a small correction offset to the angle applied to those images as described in the course. After some tests, I used a correction of 0.25 that seemed to give the best driving results. Using the left and right images helped generalized the training by augmenting the input data. Here are some examples of left and right images:
 
 ![alt text][image8]
 ![alt text][image9]
 ![alt text][image10]
 
-After the collection process, I had X number of data points. I then preprocessed this data by normalizing the images by diving the pixel values by 127.5 and subtracting 1.0 to bring them between -1.0 nd 1.0 which makes the model normally easier to converge.
+After the collection process, I had 30552 number of data points (each data point includes 3 images: left, right and center). I then preprocessed this data by first cropping it and removing the top 50 pixels and the bottom 20. This removes the unnecessary part of the picture that contains non-relevant information such as scenery or the hood of the car. I then apply a simple 3x3 guassian blur to reduce noise, convert to YUV color space as suggested by NVidia and resized the image to 200x66. I also perform normalizing of the images by diving the pixel values by 127.5 and subtracting 1.0 to bring them between -1.0 nd 1.0 which makes the model normally easier to converge.
 
-I also perform cropping to feed in the model only the part of the image that is useful. The cropping removes 50 pixels from the top of the image and 20 pixels from the bottom (the hood fo the car). This cropping also reduces training and inference times processing times. Here is an example of a cropped image:
+Here is an example of a cropped image:
 
 ![alt text][image10]
 
