@@ -16,9 +16,9 @@ The goals / steps of this project are the following:
 
 [image1]: ./examples/network_model.png "Model Visualization"
 [image2]: ./examples/center_lane.jpg "Center lane example"
-[image3]: ./examples/recovery1.png "Recovery Image - far"
-[image4]: ./examples/recovery2.png "Recovery Image - mid"
-[image5]: ./examples/recovery3.png "Recovery Image - center"
+[image3]: ./examples/recovery_1.jpg "Recovery Image - far"
+[image4]: ./examples/recovery2.jpg "Recovery Image - mid"
+[image5]: ./examples/recovery3.jpg "Recovery Image - center"
 [image6]: ./examples/normal_image.jpg "Normal Image"
 [image7]: ./examples/flipped_image.jpg "Flipped Image"
 [image8]: ./examples/left_camera.jpg "Left Camera Image"
