@@ -186,4 +186,4 @@ I randomly shuffled the data set and put 20% of the data into a validation.
 I used the remaining 80% as training data for the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs I found was 10 as evidenced by the good driving of the vehicle on both tracks. More itereations reduced slightly the training and validation loss but did not improve the actual driving. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
 The final videos can be found here:
-- [First track @9mph]()
+- [First track @9mph][video1]
