@@ -25,7 +25,7 @@ The goals / steps of this project are the following:
 [image9]: ./examples/center_camera.jpg "Center Camera Image"
 [image10]: ./examples/right_camera.jpg "Right Camera Image"
 [image11]: ./examples/original_image.png "Original Image (without preprocessing)"
-[image12]: ./examples/cropped_image.png "Preprocessed Image"
+[image12]: ./examples/preprocessed_image.png "Preprocessed Image"
 
 [video1]: ./videos/first_track_9.mp4 "First Track, 9mph"
 [video2]: ./videos/first_track.mp4 "First Track, 15mph"
