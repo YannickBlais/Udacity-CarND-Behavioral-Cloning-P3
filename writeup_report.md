@@ -24,7 +24,8 @@ The goals / steps of this project are the following:
 [image8]: ./examples/left_camera.jpg "Left Camera Image"
 [image9]: ./examples/center_camera.jpg "Center Camera Image"
 [image10]: ./examples/right_camera.jpg "Right Camera Image"
-[image11]: ./examples/cropped_image.png "Cropped Image"
+[image11]: ./examples/original_image.png "Original Image (without preprocessing)"
+[image12]: ./examples/cropped_image.png "Preprocessed Image"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -173,10 +174,11 @@ I also included the left and right images. In order to do so I had to apply a sm
 
 After the collection process, I had 30552 number of data points (each data point includes 3 images: left, right and center). I then preprocessed this data by first cropping it and removing the top 50 pixels and the bottom 20. This removes the unnecessary part of the picture that contains non-relevant information such as scenery or the hood of the car. I then apply a simple 3x3 guassian blur to reduce noise, convert to YUV color space as suggested by NVidia and resized the image to 200x66. I also perform normalizing of the images by diving the pixel values by 127.5 and subtracting 1.0 to bring them between -1.0 nd 1.0 which makes the model normally easier to converge.
 
-Here is an example of a cropped image:
+Here is an example of an image pre- and post-preprocessing:
 
-![alt text][image10]
+![alt text][image11]
+![alt text][image12]
 
-I finally randomly shuffled the data set and put 20% of the data into a validation set. 
+I randomly shuffled the data set and put 20% of the data into a validation.
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used the remaining 80% as training data for the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs I found was 10 as evidenced by the good driving of the vehicle on both tracks. More itereations reduced slightly the training and validation loss but did not improve the actual driving. I used an adam optimizer so that manually training the learning rate wasn't necessary.
